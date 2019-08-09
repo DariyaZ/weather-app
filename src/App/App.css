@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400&display=swap');
+
+.base {
+  background: linear-gradient(to right, #fff, #ecf5f5);
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 70%;
+  background-color: #fff;
+  display: flex;
+  font-size: 16px;
+  color: #696868;
+  box-shadow: 0 0 50px black;
+  font-family: 'Dosis', sans-serif;
+}
+
+.content-left {
+  width: 60%;
+  padding: 50px;
+}
+
+.forecast-today {
+  margin-bottom: 30px;
+}
+
+.forecast-info {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.city {
+  font-size: 36px;
+}
+
+.temperature {
+  font-size: 128px;
+  font-weight: 200;
+  margin-right: 40px;
+}
+
+.date-today {
+  font-size: 28px;
+}
+
+.forecast-week {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forecast-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #636262;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.weather-icon {
+  margin: 10px 0;
+}
+
+i {
+  filter: invert(64%) sepia(100%) saturate(2846%) hue-rotate(489deg) brightness(69%) contrast(19%);
+}
+
+.content-right {
+  width: 40%;
+  background-size: cover;
+  background-position: 100%;
+}
+
+.background-cloudy {
+  background-image: url('../WeatherCard/images/cloudy.jpg');
+}
+
+.background-clear {
+  background-image: url('../WeatherCard/images/clear.jpg');
+}
+
+.background-rain {
+  background-image: url('../WeatherCard/images/rain.jpg');
+}
+
+.background-unknown {
+  background-image: url('../WeatherCard/images/unknown.jpg');
+}
