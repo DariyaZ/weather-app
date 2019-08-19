@@ -35,6 +35,7 @@
 }
 
 .city {
+  display: block;
   font-size: 36px;
 }
 

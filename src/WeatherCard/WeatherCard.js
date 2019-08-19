@@ -29,38 +29,46 @@ export default class WeatherCard extends React.Component {
     }
 
     render() {
-        console.log(this.state.weather);
         const { weather } = this.state;
 
         if (!weather.list) {
             return null;
         }
 
-        const weatherToday = weather.list[0];
-        const weatherType = weatherToday.weather[0].main.toLowerCase();     
+        const weatherToday = weather.list[0],
+              weatherType = weatherToday.weather[0].main.toLowerCase(),
+              days = [1, 2, 3, 4, 5, 6];
 
-        const days = [1, 2, 3, 4, 5, 6];
+        const dayForecast = days.map((day) => {
+            const dayTemperature = weather.list[day].temp.day.toFixed(),
+                  dayName = weather.list[day].dt,
+                  dayWeatherType = weather.list[day].weather[0].main.toLowerCase();
 
-        const dayForecast = days.map((day) =>
-            <a href='#' key={day} className='forecast-day'>
-                <span>{getDateFromDT(weather.list[day].dt, 'ddd').toUpperCase()}</span>
-                <span className='weather-icon'>
-                    <Icon size='small' weatherType={getIconByWeatherType(weather.list[day].weather[0].main.toLowerCase())}/>
-                </span>
-                <span>
-                    {weather.list[day].temp.day.toFixed()}°
-                </span>
-            </a>
-        );
+            return (
+                <a href='#' key={day} className='forecast-day'>
+                    <span>{getDateFromDT(dayName, 'ddd').toUpperCase()}</span>
+                    <span className='weather-icon'>
+                        <Icon size='small' weatherType={getIconByWeatherType(dayWeatherType)}/>
+                    </span>
+                    <span>
+                        {dayTemperature}°
+                    </span>
+                </a>
+            )
+        });
+
+        const city = weather.city.name.toUpperCase(),
+              todayTemperature = weatherToday.temp.day.toFixed();
+
 
         return (
             <React.Fragment>
                 <div className='content-left'>
                     <section className='forecast-today'>
-                        <span className='city'>{weather.city.name.toUpperCase()}</span><br></br>
-                        <span className='date-today'>{ getDateFromDT(weatherToday.dt, 'MMMM Do') }</span>
+                        <span className='city'>{city}</span>
+                        <span className='date-today'>{getDateFromDT(weatherToday.dt, 'MMMM Do')}</span>
                         <p className='forecast-info'>
-                            <span className='temperature'>{weatherToday.temp.day.toFixed()}°</span>
+                            <span className='temperature'>{todayTemperature}°</span>
                             <span>
                                 <Icon size='large' weatherType={getIconByWeatherType(weatherType)}/>
                             </span>
